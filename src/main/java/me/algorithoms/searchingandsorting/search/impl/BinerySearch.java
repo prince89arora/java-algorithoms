@@ -7,19 +7,41 @@ import java.util.List;
 /**
  * @author prince.arora
  */
-public class BinerySearch<T> implements Finder<T> {
+public class BinerySearch<T> extends Finder<T> {
 
-    BinerySearch(List<T> tList) { tList =  this.tList }
+    public BinerySearch(List<T> tList) { this.tList = tList; }
+
+    private int index = -1;
 
     @Override
     public T find(T t) {
-
+        searchElement(0 , this.tList.size() - 1, t);
+        System.out.printf("index is "+ index);
+        return (index >= 0) ? this.tList.get(index) : null;
     }
 
-    private void searchElement(int start, int end) {
-        int diff = (start + end)/2;
-        for (int i = start; i <= end; i++) {
+    private void searchElement(int start, int end, T t) {
+        if (t == this.tList.get(start)) {
+            this.index = start;
+            return;
+        }
 
+        if (t == this.tList.get(end)) {
+            this.index = end;
+            return;
+        }
+
+        int diff = (start + end)/2;
+
+        if (this.tList.get(diff) == t) {
+            this.index = diff;
+            return;
+        }
+
+        if ( (Integer) this.tList.get(diff) > (Integer) t ) {
+            searchElement(start, diff, t );
+        } else {
+            searchElement(diff, end, t);
         }
     }
 }
