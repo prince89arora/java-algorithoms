@@ -16,10 +16,16 @@ public class BinerySearch<T> extends Finder<T> {
     @Override
     public T find(T t) {
         searchElement(0 , this.tList.size() - 1, t);
-        System.out.printf("index is "+ index);
         return (index >= 0) ? this.tList.get(index) : null;
     }
 
+    /**
+     * Finding element index in list
+     *
+     * @param start
+     * @param end
+     * @param t
+     */
     private void searchElement(int start, int end, T t) {
         if (t == this.tList.get(start)) {
             this.index = start;
