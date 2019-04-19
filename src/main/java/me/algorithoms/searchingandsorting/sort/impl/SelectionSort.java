@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * Implementation for selection sort to
  * @author prince.arora
  */
 public class SelectionSort<T> extends Sort<T> {
@@ -29,9 +30,5 @@ public class SelectionSort<T> extends Sort<T> {
             Helper.swap(this.tList, min_indx, i);
         }
         return this.tList;
-    }
-
-    public static void main(String[] args) {
-
     }
 }
