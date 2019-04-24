@@ -1,5 +1,6 @@
 package me.algorithoms.test;
 
+import me.algorithoms.searchingandsorting.sort.impl.BubleSort;
 import me.algorithoms.searchingandsorting.sort.impl.SelectionSort;
 import org.junit.Test;
 
@@ -27,6 +28,19 @@ public class SortTest {
         );
 
         List<Integer> sortedList = sort.sort();
+        List<Integer> sortedListCompare = Arrays.asList(new Integer[] {2,3,5,6,7,12,34,34});
+        assertThat(sortedList, is(sortedListCompare));
+    }
+
+    @Test
+    public void bubbleSortTest() {
+        BubleSort<Integer> bubleSort = new BubleSort<>(
+                new IntegerComparator(),
+                Arrays.asList(
+                        new Integer[]{2,3,5,6,7,34,12,34}
+                )
+        );
+        List<Integer> sortedList = bubleSort.sort();
         List<Integer> sortedListCompare = Arrays.asList(new Integer[] {2,3,5,6,7,12,34,34});
         assertThat(sortedList, is(sortedListCompare));
     }
