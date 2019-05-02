@@ -17,6 +17,12 @@ public class SelectionSort<T> extends Sort<T> {
         this.tList = ts;
     }
 
+    /**
+     * Select elements from list while iteration, and swap them if they are
+     * greater then + 1 index.
+     *
+     * @return
+     */
     @Override
     public List<T> sort() {
         for(int i = 0; i < this.tList.size(); i++) {
