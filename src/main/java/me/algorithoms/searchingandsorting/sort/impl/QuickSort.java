@@ -7,6 +7,9 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * Quick sort sorting
+ * Recursive type
+ *
  * @author prince.arora
  */
 public class QuickSort<T> extends Sort<T> {
@@ -18,22 +21,33 @@ public class QuickSort<T> extends Sort<T> {
 
     @Override
     public List<T> sort() {
-        int pivot  = (this.tList.size() - 1);
-        return null;
+        this.quickSort(0, this.tList.size() - 1);
+        return this.tList;
     }
 
-    private void quickSort(int pivot, int r, int l) {
-        T pivotValue = this.tList.get(pivot);
-        for(int i = r; i < l; i++) {
-            if (i != pivot) {
-                if (this.tComparator.compare(this.tList.get(i), pivotValue) <= 0 &&
-                        pivot < i) {
-                    Helper.swap(this.tList, i, pivot);
-                } else if (this.tComparator.compare(this.tList.get(i), pivotValue) < 0 &&
-                    pivot > i) {
-                    Helper.swap(this.tList, i, pivot);
-                }
+    private int partition(int low, int high) {
+        T pivotValue = this.tList.get(high);
+        int i = low - 1;
+
+        for (int j=low; j<high; j++) {
+            if (this.tComparator.compare(this.tList.get(j), pivotValue) <= 0) {
+                i++;
+                Helper.swap(this.tList, i, j);
+            }
+        }
+        Helper.swap(this.tList, (i+1), high);
+        return i+1;
+    }
+
+    private void quickSort(int low, int high) {
+        {
+            if (low < high)
+            {
+                int pi = partition(low, high);
+                quickSort(low, pi-1);
+                quickSort(pi+1, high);
             }
         }
     }
+
 }
