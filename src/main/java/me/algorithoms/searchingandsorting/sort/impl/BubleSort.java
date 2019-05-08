@@ -6,6 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * Bubble sort implementation.
+ *
  * @author prince.arora
  */
 public class BubleSort<T> extends Sort<T> {
@@ -23,6 +25,7 @@ public class BubleSort<T> extends Sort<T> {
     private List<T> bubbleSort() {
         int l = this.tList.size();
 
+        //Compare all items in list with previous item and replace to sort.
         for (int i = 0; i < l; i++) {
             for (int j = i;j < l - 1; j++ ) {
                 if (this.tComparator.compare(this.tList.get(j+1), this.tList.get(j)) < 0) {
