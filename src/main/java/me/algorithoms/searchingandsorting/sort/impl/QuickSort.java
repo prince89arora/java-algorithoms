@@ -25,6 +25,13 @@ public class QuickSort<T> extends Sort<T> {
         return this.tList;
     }
 
+    /**
+     * Get new partition for a subset of list.
+     *
+     * @param low
+     * @param high
+     * @return
+     */
     private int partition(int low, int high) {
         T pivotValue = this.tList.get(high);
         int i = low - 1;
@@ -39,6 +46,13 @@ public class QuickSort<T> extends Sort<T> {
         return i+1;
     }
 
+    /**
+     * Initiate Quick sorting.
+     * Recursively calling sort based on low and high index.
+     *
+     * @param low
+     * @param high
+     */
     private void quickSort(int low, int high) {
         {
             if (low < high)
