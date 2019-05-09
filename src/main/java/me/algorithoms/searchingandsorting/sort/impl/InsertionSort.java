@@ -28,7 +28,7 @@ public class InsertionSort<T> extends Sort<T> {
                         this.tComparator.compare(
                                 this.tList.get(i),
                                 this.tList.get(j)
-                        ) <= 0
+                        ) < 0
                 ) {
                     Helper.swap(this.tList, j, i);
                     break;
