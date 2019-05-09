@@ -18,8 +18,8 @@ public class SelectionSort<T> extends Sort<T> {
     }
 
     /**
-     * Select elements from list while iteration, and swap them if they are
-     * greater then + 1 index.
+     * Select smallest element from list while iteration, and swap them if the initial
+     * element of the remaining list.
      *
      * @return
      */
