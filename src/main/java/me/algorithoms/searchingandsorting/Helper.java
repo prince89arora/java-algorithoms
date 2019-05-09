@@ -1,6 +1,5 @@
 package me.algorithoms.searchingandsorting;
 
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -9,6 +8,7 @@ import java.util.List;
 public class Helper {
 
     /**
+     * Swap values in list with from and to indexes.
      *
      * @param tList
      * @param from
