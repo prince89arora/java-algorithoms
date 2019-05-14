@@ -72,6 +72,10 @@ public class SortTest {
         List<Integer> sortedListCompare = Arrays.asList(new Integer[] {2,3,5,6,7,12,34,34});
         assertThat(sortedList, is(sortedListCompare));
     }
+    @Test
+    public void shellSort() {
+
+    }
 
 
     private class IntegerComparator implements Comparator<Integer> {
