@@ -17,6 +17,18 @@ public class ShellSort<T> extends Sort<T> {
 
     @Override
     public List<T> sort() {
-        return null;
+        int n = this.tList.size();
+        for (int gap = n/2; gap > 0; gap /= 2)
+        {
+            for (int i = gap; i < n; i += 1)
+            {
+                T temp = this.tList.get(i);
+                int j;
+                for (j = i; j >= gap && this.tComparator.compare(this.tList.get(j - gap), temp) > 0; j -= gap)
+                    arr[j] = arr[j - gap];
+
+                arr[j] = temp;
+            }
+        }
     }
 }
