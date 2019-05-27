@@ -16,14 +16,14 @@ import java.util.Comparator;
  */
 public class SearchTest {
 
-    IntegerComparator comparator;
+    static IntegerComparator comparator;
 
-    @Before
-    public void before() {
-        this.comparator = new IntegerComparator();
+    @BeforeClass
+    public static void beforeInit() {
+        SearchTest.comparator = new IntegerComparator();
     }
 
-    private class IntegerComparator implements Comparator<Integer> {
+    private static class IntegerComparator implements Comparator<Integer> {
 
         @Override
         public int compare(Integer o1, Integer o2) {
