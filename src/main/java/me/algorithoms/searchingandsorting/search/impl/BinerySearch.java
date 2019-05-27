@@ -2,6 +2,7 @@ package me.algorithoms.searchingandsorting.search.impl;
 
 import me.algorithoms.searchingandsorting.search.Finder;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -9,7 +10,10 @@ import java.util.List;
  */
 public class BinerySearch<T> extends Finder<T> {
 
-    public BinerySearch(List<T> tList) { this.tList = tList; }
+    public BinerySearch(List<T> tList, Comparator<T> tComparator) {
+        this.tList = tList;
+        this.tComparator = tComparator;
+    }
 
     private int index = -1;
 
@@ -27,24 +31,24 @@ public class BinerySearch<T> extends Finder<T> {
      * @param t
      */
     private void searchElement(int start, int end, T t) {
-        if (t == this.tList.get(start)) {
+        if (this.tComparator.compare(t, this.tList.get(start)) == 0) {
             this.index = start;
             return;
         }
 
-        if (t == this.tList.get(end)) {
+        if (this.tComparator.compare(t, this.tList.get(end)) == 0) {
             this.index = end;
             return;
         }
 
         int diff = (start + end)/2;
 
-        if (this.tList.get(diff) == t) {
+        if (this.tComparator.compare(this.tList.get(diff), t) == 0) {
             this.index = diff;
             return;
         }
 
-        if ( (Integer) this.tList.get(diff) > (Integer) t ) {
+        if ( this.tComparator.compare(this.tList.get(diff), t) > 0 ) {
             searchElement(start, diff, t );
         } else {
             searchElement(diff, end, t);
