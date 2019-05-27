@@ -48,7 +48,8 @@ public class SearchTest {
 
     @Test
     public void jumpSearch() {
-        Finder<Integer> finder = new JumpSearch<>(Arrays.asList(new Integer[]{1,2,6,7,10,20,40,50}));
+        Finder<Integer> finder = new JumpSearch<>(
+                Arrays.asList(new Integer[]{1,2,6,7,10,20,40,50}), comparator);
         Integer element = finder.find(10);
         assertEquals(element, new Integer(10));
     }

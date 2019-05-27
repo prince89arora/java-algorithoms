@@ -3,6 +3,7 @@ package me.algorithoms.searchingandsorting.search.impl;
 import me.algorithoms.searchingandsorting.search.Finder;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -10,14 +11,9 @@ import java.util.List;
  */
 public class JumpSearch<T> extends Finder<T> {
 
-    public JumpSearch(List<T> tList) {
+    public JumpSearch(List<T> tList, Comparator<T> tComparator) {
+        this.tComparator = tComparator;
         this.tList = tList;
-    }
-
-    public static void main(String[] args) {
-        Finder<Integer> finder = new JumpSearch<>(Arrays.asList(new Integer[]{1,2,6,7,10,20,40,50,52,53,54,56,57,58}));
-        Integer element = finder.find(10);
-        System.out.printf("el  " + element);
     }
 
     @Override
@@ -31,7 +27,7 @@ public class JumpSearch<T> extends Finder<T> {
 
         int step = (int) Math.floor(Math.sqrt(size));
 
-        while( (Integer) tList.get(Math.min(step, size)-1) < (Integer)t ) {
+        while(this.tComparator.compare(tList.get(Math.min(step, size)-1), t) < 0) {
             prev = step;
             step += (int) Math.floor(Math.sqrt(prev));
             if (prev > size) {
@@ -39,14 +35,14 @@ public class JumpSearch<T> extends Finder<T> {
             }
         }
 
-        while ((Integer) tList.get(prev) < (Integer) t) {
+        while (this.tComparator.compare(tList.get(prev), t) < 0) {
             prev++;
             if (prev == Math.min(step, size)) {
                 return null;
             }
         }
 
-        if ( (Integer) tList.get(prev) == (Integer) t ) {
+        if ( this.tComparator.compare(this.tList.get(prev), t) == 0) {
             return tList.get(prev);
         }
         return null;
