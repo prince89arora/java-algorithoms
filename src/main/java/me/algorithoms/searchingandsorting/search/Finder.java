@@ -1,5 +1,6 @@
 package me.algorithoms.searchingandsorting.search;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -8,6 +9,8 @@ import java.util.List;
 public abstract class Finder<T> {
 
     protected List<T> tList;
+
+    protected Comparator<T> tComparator;
 
     public abstract T find(T t);
 
