@@ -3,6 +3,7 @@ package me.algorithoms.test;
 import me.algorithoms.searchingandsorting.search.Finder;
 import me.algorithoms.searchingandsorting.search.impl.BinerySearch;
 import me.algorithoms.searchingandsorting.search.impl.JumpSearch;
+import me.algorithoms.searchingandsorting.search.impl.LinearSearch;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -34,6 +35,16 @@ public class SearchTest {
             else
                 return 0;
         }
+    }
+
+    @Test
+    public void linearSearchTest() {
+        Finder<Integer> finder = new LinearSearch<>(
+                Arrays.asList(new Integer[]{1,2,3,4,5,6,7,8,9}),
+                this.comparator
+        );
+        Integer element = finder.find(7);
+        assertEquals(element, new Integer(7));
     }
 
     @Test
