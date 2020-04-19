@@ -2,6 +2,8 @@ package me.algorithoms.searchingandsorting.search.impl;
 
 import me.algorithoms.searchingandsorting.search.Finder;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -12,6 +14,11 @@ public class BinerySearch<T> extends Finder<T> {
 
     public BinerySearch(List<T> tList, Comparator<T> tComparator) {
         this.tList = tList;
+        this.tComparator = tComparator;
+    }
+
+    public BinerySearch(T[] array, Comparator<T> tComparator) {
+        this.tList = new ArrayList<T>(Arrays.asList(array));
         this.tComparator = tComparator;
     }
 
@@ -48,6 +55,7 @@ public class BinerySearch<T> extends Finder<T> {
             return;
         }
 
+        //Executing different path based on element comparison with mid point.
         if ( this.tComparator.compare(this.tList.get(diff), t) > 0 ) {
             searchElement(start, diff, t );
         } else {
